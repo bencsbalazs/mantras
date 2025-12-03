@@ -215,8 +215,11 @@ class MantraBubbles extends HTMLElement {
         const effectiveHeight = containerHeight - margin * 2;
         const effectiveWidth = containerWidth - margin * 2;
         const baseSize = Math.min(effectiveWidth, effectiveHeight);
-        const estimatedFontSize = 20;
-        const minSize = Math.sqrt(mantra.length) * estimatedFontSize;
+        const fontSize = Number.parseFloat(getComputedStyle(bubble).fontSize);
+        // Estimate required diameter based on text area and padding
+        // Formula: 1.35 * sqrt(length) * fontSize + padding
+        const minSize = 1.35 * Math.sqrt(mantra.length) * fontSize + 60;
+
         const randomSize = Math.random() * (baseSize * 0.3) + (baseSize * 0.5);
         let size = Math.max(minSize, randomSize);
         size = Math.min(size, baseSize);
