@@ -1,4 +1,4 @@
-const DEFAULT_LANGUAGE = 'en';
+const DEFAULT_LANGUAGE = 'hu';
 const DEFAULT_CATEGORY = 'general';
 const ANIMATION_DURATION = 8000;
 const TRANSITION_DURATION = 1500;
@@ -207,7 +207,7 @@ class MantraBubbles extends HTMLElement {
 
     setupAndAnimateBubble(bubble, mantra) {
         bubble.style.animation = 'none';
-        bubble.offsetWidth = 0;
+        bubble.offsetWidth; // Trigger reflow
         bubble.textContent = mantra;
 
         const { offsetWidth: containerWidth, offsetHeight: containerHeight } = this.container;
